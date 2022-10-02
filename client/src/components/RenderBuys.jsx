@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
-import {dataActions} from './dataSlice'
+import {dataActions} from '../reducers/dataSlice'
+import Chart from './Chart'
 
 const RenderBuys = () => {
 
@@ -9,6 +10,8 @@ const RenderBuys = () => {
 
     const [buyArr, setBuyArr] = useState([])
     const [companyAvgs, setCompanyAvgs] = useState([])
+    const [selectedCompany, setSelectedCompany] = useState([])
+
 
     useEffect(() => {
 
@@ -75,21 +78,27 @@ const RenderBuys = () => {
                             let temp = {
                                 symbol : comp.symbol,
                                 percentChange,
+                                comp : comp
                             }
         
                             stocksToBuy.push(temp)
                         }
 
-                    case 'sell':
+                        break;
+
+                    default:
                         if(percentChange >= 15){
         
                             let temp = {
                                 symbol : comp.symbol,
                                 percentChange,
+                                comp : comp
                             }
         
                             stocksToBuy.push(temp)
                         }
+
+                        break;
                 }
             })
 
@@ -110,25 +119,21 @@ const RenderBuys = () => {
 
     <>
 
-            {/* {companyAvgs.map((obj)=> {
-
-                return(
-                    <div>
-                        {obj.symbol} : {obj.fourMonthAvg}
-                    </div>
-            )
-                
-            })} */}
-
             {buyArr.map((obj)=> {
 
                 return(
-                    <div>
-                        {obj.symbol} : {obj.percentChange}
-                    </div>
+                    <>
+                        <div>
+                            {obj.symbol} : {obj.percentChange}
+                            <div style={{width: 700}}>
+                                <Chart compData={obj.comp}/>
+                            </div>
+                        </div>
+
+                    </>
             )
-                
-            })}
+            
+        })}
     </>
   )
 }

@@ -1,14 +1,17 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
-import {dataActions} from './dataSlice'
+import {dataActions} from '../reducers/dataSlice'
+import Chart from './Chart'
 
-const RenderBuys = () => {
+const RenderSells = () => {
 
     const companies = useSelector(state => state.companies)
     const dispatch = useDispatch()
 
     const [buyArr, setBuyArr] = useState([])
     const [companyAvgs, setCompanyAvgs] = useState([])
+    const [selectedCompany, setSelectedCompany] = useState([])
+
 
     useEffect(() => {
 
@@ -41,9 +44,11 @@ const RenderBuys = () => {
             setCompanyAvgs([...compiledAvgs])
         }
 
+
         getAverages()
 
-        const determine = () => {
+
+        const determine = (type) => {
 
             let stocksToBuy = []
 
@@ -60,18 +65,40 @@ const RenderBuys = () => {
 
                         percentChange = ((final - avg) / avg) * 100
 
+                        percentChange = Math.round(percentChange * 100) / 100
+
                         break;
                     }
                 }
 
-                if(percentChange <= -20){
+                switch(type){
+                    case 'buy':
+                        if(percentChange <= -20){
+        
+                            let temp = {
+                                symbol : comp.symbol,
+                                percentChange,
+                                comp : comp
+                            }
+        
+                            stocksToBuy.push(temp)
+                        }
 
-                    let temp = {
-                        symbol : comp.symbol,
-                        percentChange,
-                    }
+                        break;
 
-                    stocksToBuy.push(temp)
+                    default:
+                        if(percentChange >= 15){
+        
+                            let temp = {
+                                symbol : comp.symbol,
+                                percentChange,
+                                comp : comp
+                            }
+        
+                            stocksToBuy.push(temp)
+                        }
+
+                        break;
                 }
             })
 
@@ -79,6 +106,7 @@ const RenderBuys = () => {
         }
 
         determine()
+
 
         console.log(companies);
 
@@ -91,27 +119,23 @@ const RenderBuys = () => {
 
     <>
 
-            {/* {companyAvgs.map((obj)=> {
-
-                return(
-                    <div>
-                        {obj.symbol} : {obj.fourMonthAvg}
-                    </div>
-            )
-                
-            })} */}
-
             {buyArr.map((obj)=> {
 
                 return(
-                    <div>
-                        {obj.symbol} : {obj.percentChange}
-                    </div>
+                    <>
+                        <div>
+                            {obj.symbol} : {obj.percentChange}
+                            <div style={{width: 700}}>
+                                <Chart compData={obj.comp}/>
+                            </div>
+                        </div>
+
+                    </>
             )
-                
-            })}
+            
+        })}
     </>
   )
 }
 
-export default RenderBuys
+export default RenderSells
