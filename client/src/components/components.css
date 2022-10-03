@@ -1,11 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+
+.topSpace{
+    padding-top: 10%;
+}
 
 .navbar{
-    position: sticky;
+    font-family: 'Righteous'
+}
+
+.navbarSiteName{
+    font-size: 40px;
 }
 
 .slider {
     position: relative;
-    height: 100vh;
+    height: 25vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -42,4 +53,32 @@
     opacity: 1;
     transition-duration: 1s;
     transform: scale(1.08);
+}
+
+.stock {
+    font-family: 'Bebas Neue';
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.chart {
+    width : 900px;
+}
+
+@media only screen and (max-width: 1200px) {
+    .chart{
+        width: 700px
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .chart{
+        width: 500px
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .chart{
+        width: 300px
+    }
 }

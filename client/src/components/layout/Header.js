@@ -11,7 +11,7 @@ const Header = () => {
     <>
   <Navbar fixed="top" bg="dark" variant="dark">
         <Container >
-          <Navbar.Brand href="#home">Buy Low Sell High</Navbar.Brand>
+          <Navbar.Brand href="#home" className="navbar">Buy Low Sell High</Navbar.Brand>
           <Nav className="ms-auto">
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/buy">Stocks to buy</Nav.Link>

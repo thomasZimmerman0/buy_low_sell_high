@@ -15,6 +15,7 @@ import './index.css';
 import App from './App';
 import RenderBuys from './components/RenderBuys';
 import RenderSells from './components/RenderSells';
+import StockDetails from './components/StockDetails'
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import BaseLayout from './components/layout/BaseLayout'
@@ -40,6 +41,7 @@ root.render(
                         <Route path="/" element={<App />}/>
                         <Route path="/buy" element={<RenderBuys />}/>
                         <Route path="/sell" element={<RenderSells />}/>
+                        <Route path="/stockDetails" element={<StockDetails />}/>
                     </Routes>
                 </BaseLayout>
             </Router>

@@ -5,12 +5,11 @@ import Chart from './Chart'
 
 const RenderSells = () => {
 
-    const companies = useSelector(state => state.companies)
+    const companies = useSelector(state => state.persistDataReducer.companies)
     const dispatch = useDispatch()
 
     const [buyArr, setBuyArr] = useState([])
     const [companyAvgs, setCompanyAvgs] = useState([])
-    const [selectedCompany, setSelectedCompany] = useState([])
 
 
     useEffect(() => {

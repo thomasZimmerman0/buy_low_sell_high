@@ -5,7 +5,7 @@ import Chart from './Chart'
 
 const RenderBuys = () => {
 
-    const companies = useSelector(state => state.companies)
+    const companies = useSelector(state => state.persistDataReducer.companies)
     const dispatch = useDispatch()
 
     const [buyArr, setBuyArr] = useState([])
