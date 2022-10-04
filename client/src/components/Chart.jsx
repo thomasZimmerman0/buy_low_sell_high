@@ -25,7 +25,6 @@ const ChartWrapper = ({compData}) => {
     }]
   })
 
-  console.log(compData);
 
 
   return (

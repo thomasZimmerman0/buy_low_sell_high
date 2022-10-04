@@ -6,6 +6,12 @@
     padding-top: 10%;
 }
 
+.detailsDiv{
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+
 .navbar{
     font-family: 'Righteous'
 }
@@ -82,3 +88,40 @@
         width: 300px
     }
 }
+
+.datePriceListContainer{
+    display: flex;
+    align-items: center;
+}
+
+.dateList{
+    padding: 2%;
+    list-style-type: none;
+    font-size: 24px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.averageP{
+    font-size: 30px;
+    font-weight: 100;
+
+}
+
+.listItem{
+    margin: 6%;
+    font-family:'Courier New', Courier, monospace;
+    display:flex;
+    flex-direction:column;
+    align-items:center
+}
+
+.date{
+    font-family: 'Bebas Neue';
+    font-size: 30px;
+    text-decoration: underline;
+    
+}
+
+
+

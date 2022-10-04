@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import dataSlice from "./reducers/dataSlice";
 import newSlice from "./reducers/newSlice";
+import percentSlice from "./reducers/percentSlice"
 
 import {
     persistReducer,
@@ -24,8 +25,9 @@ const persistConfig = {
 const persistDataReducer = persistReducer(persistConfig, dataSlice)
 const persistNewSlice = persistReducer(persistConfig, newSlice)
 
+
 export const store = configureStore({
-    reducer: {persistDataReducer, persistNewSlice},
+    reducer: {persistDataReducer, persistNewSlice, percentSlice},
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
         serializableCheck: {

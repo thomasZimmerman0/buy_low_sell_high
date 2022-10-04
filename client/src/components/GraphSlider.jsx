@@ -6,13 +6,13 @@ import './components.css'
 import {newSliceActions} from '../reducers/newSlice'
 import {useDispatch, useSelector} from 'react-redux'
 
-const ImageSlider = ({data}) => {
+const ImageSlider = () => {
 
-const company = useSelector(state=> state.persistNewSlice.company)
+const companies = useSelector(state => state.percentSlice.companiesWithPercents)
 const dispatch = useDispatch()
 
 const[current, setCurrent] = useState(0)
-const length = data.length
+const length = companies.length
 
 const nextSlide = () => {
     setCurrent(current === length -1 ? 0 : current + 1)
@@ -22,14 +22,13 @@ const prevSlide = () => {
     setCurrent(current === 0 ? length - 1 : current - 1)
 }
 
-console.log(company)
 
   return (
    <>
     <section className="slider">
         <FaArrowAltCircleLeft className="left-arrow"  onClick={nextSlide}/>
         <FaArrowAltCircleRight className="right-arrow" onClick={prevSlide}/>
-        {data.map((comp, index)=>{
+        {companies.map((comp, index)=>{
             return(
                 <div className={index === current ? 'slide active' : 'slide'} key={index}>
                     {index === current && (

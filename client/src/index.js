@@ -1,15 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import { configureStore } from '@reduxjs/toolkit'
 import { Provider } from 'react-redux'
 import { store } from './store'
 import { PersistGate } from 'redux-persist/integration/react'
 import { persistStore } from 'redux-persist'
-
-
-import dataReducer from './reducers/dataSlice'
-import companyDataReducer from './components/companySpecificDataSlice'
 
 import './index.css';
 import App from './App';
@@ -23,10 +18,6 @@ import BaseLayout from './components/layout/BaseLayout'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 let persistor = persistStore(store)
-
-// export const store = configureStore({
-//     reducer: dataReducer, companyDataReducer,
-// })
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

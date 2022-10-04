@@ -5,7 +5,7 @@ const initialState = {
 }
 
 export const newSlice = createSlice({
-  name: 'data',
+  name: 'data1',
   initialState,
   reducers: {
       setCompany(state, action){

@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   companies : [],
+  // companiesWithPercents:[],
 }
 
 export const dataSlice = createSlice({
@@ -11,6 +12,9 @@ export const dataSlice = createSlice({
       populate(state, action){
         state.companies = action.payload
       },
+      // populatePercents(state, action){
+      //   state.companiesWithPercents = action.payload
+      // }
     },
 
 })
