@@ -16,6 +16,6 @@ export const percentSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const percentActions = percentSlice.actions
+export const  percentActions  = percentSlice.actions
 
 export default percentSlice.reducer

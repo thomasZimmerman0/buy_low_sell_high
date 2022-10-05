@@ -13,16 +13,26 @@ import Slide from 'react-reveal/Slide';
 
 function App() {
 
-  const companies = useSelector(state => state.persistDataReducer.companies)
-  const companiesWithPercents = useSelector(state => state.percentSlice.companiesWithPercents)
-  const [modifiedList, setModifiedList] = useState([])
+  const companies = useSelector(state => state.data.companies)
 
   const [companyAvgs, setCompanyAvgs] = useState([])
-  const [buyArr, setBuyArr] = useState([])
+
 
   const dispatch = useDispatch()
       
       useEffect(() => {
+
+        const getData = async() => {
+          
+          const response = await fetch("/api")
+          const data = await response.json()
+          
+          console.log(data);
+          dispatch(dataActions.populate(data))
+        }
+
+        getData()
+
         let companyAvgs1 = []
       
         const getAverages = () => {
@@ -52,11 +62,9 @@ function App() {
               setCompanyAvgs([...compiledAvgs])
           }
     
-    dispatch(dataActions.populate(staticJson))
     
     getAverages()
     
-    console.log(companyAvgs1)
     // determine()
     const determine = () => {
       
@@ -92,16 +100,17 @@ function App() {
 
     dispatch(percentActions.populatePercents(determine()))
 
-    console.log(companiesWithPercents)
 
   },[])
 
   
   return (
     <>
-      <div className="container justify-content-center graphs">
-        <GraphSlider />
-      </div>
+      <Slide top>
+        <div className="container justify-content-center graphs">
+          <GraphSlider />
+        </div>
+      </Slide>
       <div className="pageBreak pb1">
         <div className="opacityLayer">
             <div className="textLayer">
@@ -125,7 +134,6 @@ function App() {
 
       <div>
           <SearchBar />
-          <RenderBuys />
       </div>
     </>
     

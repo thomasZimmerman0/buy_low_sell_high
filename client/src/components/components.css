@@ -6,6 +6,10 @@
     padding-top: 10%;
 }
 
+.extra{
+    margin-top: 10%;
+}
+
 .detailsDiv{
     display:flex;
     justify-content:center;
@@ -13,7 +17,12 @@
 }
 
 .navbar{
-    font-family: 'Righteous'
+    font-family: 'Righteous';
+    position: absolute;
+}
+
+.footer{
+    display: none;
 }
 
 .navbarSiteName{
@@ -65,29 +74,31 @@
     font-family: 'Bebas Neue';
     font-weight: bold;
     font-size: 30px;
+    text-decoration: none;
+    color: black;
+    transition: all 0.2s ease-in-out;
+    width: 50%;
+    padding-bottom: 5%;
 }
+
+.stock:hover{
+    transform: scale(1.05);
+}
+
+.stockAlt{
+    font-family: 'Bebas Neue';
+    font-weight: bold;
+    font-size: 30px;
+    text-decoration: none;
+    color: black;
+}
+
 
 .chart {
     width : 900px;
+    padding-bottom: 5%;
 }
 
-@media only screen and (max-width: 1200px) {
-    .chart{
-        width: 700px
-    }
-}
-
-@media only screen and (max-width: 992px) {
-    .chart{
-        width: 500px
-    }
-}
-
-@media only screen and (max-width: 768px) {
-    .chart{
-        width: 300px
-    }
-}
 
 .datePriceListContainer{
     display: flex;
@@ -109,18 +120,100 @@
 }
 
 .listItem{
-    margin: 6%;
+    margin: 2%;
     font-family:'Courier New', Courier, monospace;
     display:flex;
-    flex-direction:column;
-    align-items:center
+    align-items:center;
+    justify-content: center;
+    width: 100%;
 }
 
 .date{
     font-family: 'Bebas Neue';
     font-size: 30px;
     text-decoration: underline;
+    padding-right: 5%;
     
+}
+
+.item{
+    padding-right: 2%;
+}
+
+
+.graphSubtext{
+    width: 100%;
+    font-weight: 100;
+    font-size: x-large;
+}
+
+.widthFix{
+    width: 35%
+}
+
+@media only screen and (max-width: 1200px) {
+    .chart{
+        width: 700px
+    }
+    .widthFix{
+        width: 60%
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .chart{
+        width: 500px
+    }
+    .widthFix{
+        width: 100%
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .chart{
+        width: 300px
+    }
+    .widthFix{
+        width: 100%
+    }
+}
+
+.searchInputs{
+    position: relative;
+    height: 55px;
+    max-width: 350px;
+    width: 100%;
+    margin: 0 30px;
+    border-radius: 6px;
+    background-color: gray;
+}
+
+.searchInputs input{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    padding: 0 15px;
+    outline: 5px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 400;
+    color: black;
+}
+
+.searchHeader{
+    font-family: 'Righteous'
+}
+
+.search{
+    height: 85vh;
+    padding: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dataResult{
+    margin-top: 3%;
 }
 
 

@@ -56,3 +56,25 @@
   font-size: 28px;
   color: white
 }
+
+@media only screen and (max-width: 1200px) {
+  .header{
+    font-size: 40px;
+  }
+  .para{
+    font-size: 18px;
+  }
+}
+@media only screen and (max-width: 992px) {
+  .header{
+    font-size: 30px;
+  }
+  .para{
+    font-size: 18px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .para{
+    font-size: 18px;
+  }
+}

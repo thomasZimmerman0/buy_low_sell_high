@@ -4,6 +4,7 @@ const initialState = {
   company : [],
 }
 
+
 export const newSlice = createSlice({
   name: 'data1',
   initialState,

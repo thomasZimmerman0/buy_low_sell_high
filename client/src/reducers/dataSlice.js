@@ -5,6 +5,8 @@ const initialState = {
   // companiesWithPercents:[],
 }
 
+console.log("inside of dataSlice")
+
 export const dataSlice = createSlice({
   name: 'data',
   initialState,

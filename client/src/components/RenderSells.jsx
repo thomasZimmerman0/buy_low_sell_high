@@ -1,138 +1,49 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
-import {dataActions} from '../reducers/dataSlice'
 import Chart from './Chart'
+import {newSliceActions} from '../reducers/newSlice'
+import { Link } from 'react-router-dom';
+import Slide from 'react-reveal/Slide'
 
 const RenderSells = () => {
 
-    const companies = useSelector(state => state.persistDataReducer.companies)
-    const dispatch = useDispatch()
+  const companies = useSelector(state => state.percent.companiesWithPercents)
+  const dispatch = useDispatch()
 
-    const [buyArr, setBuyArr] = useState([])
-    const [companyAvgs, setCompanyAvgs] = useState([])
-
-
-    useEffect(() => {
-
-        let companyAvgs = []
-
-        const getAverages = () => {
-
-            let compiledAvgs = []
-        
-            companies.forEach(comp=>{
-    
-                let avg = 0
-                let temp = {}
-        
-                comp.eod.forEach(data=>{
-                    avg += data.close
-                })
-    
-                avg = avg / comp.eod.length
-                temp = {
-                    symbol : comp.symbol,
-                    fourMonthAvg : avg
-                }
-    
-                compiledAvgs.push(temp)
-                companyAvgs.push(temp)
-    
-            })
-    
-            setCompanyAvgs([...compiledAvgs])
-        }
-
-
-        getAverages()
-
-
-        const determine = (type) => {
-
-            let stocksToBuy = []
-
-            companies.forEach(comp=>{
-
-                let percentChange = 0
-
-                
-                for(let i = 0; i < companyAvgs.length; i++){
-
-                    if(comp.symbol === companyAvgs[i].symbol){
-                        let final = comp.eod[0].close
-                        let avg = companyAvgs[i].fourMonthAvg
-
-                        percentChange = ((final - avg) / avg) * 100
-
-                        percentChange = Math.round(percentChange * 100) / 100
-
-                        break;
-                    }
-                }
-
-                switch(type){
-                    case 'buy':
-                        if(percentChange <= -20){
-        
-                            let temp = {
-                                symbol : comp.symbol,
-                                percentChange,
-                                comp : comp
-                            }
-        
-                            stocksToBuy.push(temp)
-                        }
-
-                        break;
-
-                    default:
-                        if(percentChange >= 15){
-        
-                            let temp = {
-                                symbol : comp.symbol,
-                                percentChange,
-                                comp : comp
-                            }
-        
-                            stocksToBuy.push(temp)
-                        }
-
-                        break;
-                }
-            })
-
-            setBuyArr([...stocksToBuy])
-        }
-
-        determine()
-
-
-        console.log(companies);
-
-        
-    },[companies])
-
-
+  const colorObj = {
+    backgroundColor: 'rgba(85, 226, 4, 1)',
+    color: 'rgba(85, 226, 4, 1)',
+    borderColor: 'rgba(85, 226, 4, 1)'
+  }
 
   return (
 
     <>
+      <Slide left>
+        <div className="d-flex justify-content-center flex-column align-items-center extra">
+              {companies.map((obj)=> {
 
-            {buyArr.map((obj)=> {
+                if(obj.percentChange >= 15){
+                  return(
+                        <>
 
-                return(
-                    <>
-                        <div>
-                            {obj.symbol} : {obj.percentChange}
-                            <div style={{width: 700}}>
-                                <Chart compData={obj.comp}/>
-                            </div>
-                        </div>
-
-                    </>
-            )
-            
-        })}
+                          <Link onClick={()=>dispatch(newSliceActions.setCompany(obj))} to="/stockDetails" style={{textDecoration: 'none'}} className="d-flex justify-content-center widthFix">
+                              <div className="topSpace stock d-flex flex-column justify-content-center align-items-center">
+                              <h1><img src="https://cdn1.iconfinder.com/data/icons/vibrancie-action/30/action_060-trending_up-arrow-up-increase-512.png" width="34"/> {obj.symbol} : {obj.eod[0].close}</h1>
+                                  <p className="graphSubtext">  down {obj.percentChange}% from it's four month average price!</p>
+                                  <div style={{width: 700}}>
+                                      <Chart compData={obj} color={colorObj}/>
+                                  </div>
+                              </div>
+                          </Link>
+    
+                        </>
+                  )
+              }
+              
+          })}
+        </div>
+      </Slide>
     </>
   )
 }

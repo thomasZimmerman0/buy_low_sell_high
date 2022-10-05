@@ -6,10 +6,21 @@ import Stack from 'react-bootstrap/Stack'
 import Fade from 'react-reveal/Fade';
 import './components.css'
 
-const RenderBuys = () => {
+const StockDetails = () => {
 
-    const company = useSelector(state => state.persistDataReducer.company)
-    const dispatch = useDispatch()
+    const company = useSelector(state => state.newSlice.company)
+    
+    const colorObjRed = {
+        backgroundColor: 'rgba(255, 0, 60, 1)',
+        color: 'rgba(255, 0, 60, 0.6)',
+        borderColor: 'rgba(255, 0, 0, 0.4)'
+      }
+    
+    const colorObjGreen = {
+        backgroundColor: 'rgba(85, 226, 4, 1)',
+        color: 'rgba(85, 226, 4, 1)',
+        borderColor: 'rgba(85, 226, 4, 1)'
+    }
 
 
     useEffect(() => {
@@ -20,16 +31,16 @@ const RenderBuys = () => {
   return (
       <div className="topSpace">
         <Fade big>
-            <Stack className="stock detailsDiv">
+            <Stack className="stockAlt detailsDiv">
 
                     {company.symbol} : {company.eod[0].close}
 
                     <div className="chart">
-                        <Chart compData={company}/>
+                        {company.eod[0].close > company.eod[1].close ? <Chart compData={company} color={colorObjGreen}/> : <Chart compData={company} color={colorObjRed}/>}
                     </div>
             
                     <h1>{company.name}</h1>
-                    <p className="averageP">{company.symbol} is currently {company.percentChange}% from their 4 month average</p>
+                    <p className="averageP">{company.symbol} is currently {company.percentChange}% {company.percentChange > 0 ? 'up': 'down'} from their 4 month average</p>
             </Stack>
         </Fade>
 
@@ -37,15 +48,14 @@ const RenderBuys = () => {
             <Stack className="datePriceListContainer">
                 <ul className='dateList'>
                     {company.eod.map((obj)=>{
-                        return <li className="listItem">
-                            <div className="date">{obj.date.slice(0,10)} </div>
-                            <div>Open: {obj.open}</div>
-                            <div>Low: {obj.low}</div>
-                            <div>High: {obj.high}</div>
-                            <div>Close: {obj.close}</div>
-
-                        
-                            </li>
+                        return( 
+                        <li className="listItem">
+                                <div className="date">{obj.date.slice(0,10)} </div>
+                                <div className="item"> Open:{(Math.round(obj.open * 100) / 100).toFixed(2)}</div>
+                                <div className="item"> Low:{(Math.round(obj.low * 100) / 100).toFixed(2)}</div>
+                                <div className="item"> High:{(Math.round(obj.high * 100) / 100).toFixed(2)}</div>
+                                <div className="item"> Close:{(Math.round(obj.close * 100) / 100).toFixed(2)}</div>
+                        </li> )
                     })}
                 </ul>
             </Stack>
@@ -55,4 +65,4 @@ const RenderBuys = () => {
   )
 }
 
-export default RenderBuys
+export default StockDetails

@@ -2,9 +2,8 @@ import React, {useState, useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import LineChart from './LineChart'
 
-const ChartWrapper = ({compData}) => {
+const ChartWrapper = ({compData, color}) => {
 
-  
   // const [selectedCompany, setSelectedCompany] = useState({})
   const [companyData, setCompanyData] = useState({
   
@@ -18,9 +17,9 @@ const ChartWrapper = ({compData}) => {
     datasets: [{
       label:"Stock Price",
       data: compData.eod.slice(0).reverse().map(data=> data.close),
-      backgroundColor: 'rgba(255, 0, 60, 1)',
-      color: 'rgba(255, 0, 60, 0.6)',
-      borderColor: 'rgba(255, 0, 0, 0.4)'
+      backgroundColor: color.backgroundColor,
+      color: color.color,
+      borderColor: color.borderColor
       
     }]
   })

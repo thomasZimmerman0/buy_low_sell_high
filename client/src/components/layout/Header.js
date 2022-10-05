@@ -11,11 +11,11 @@ const Header = () => {
     <>
   <Navbar fixed="top" bg="dark" variant="dark">
         <Container >
-          <Navbar.Brand href="#home" className="navbar">Buy Low Sell High</Navbar.Brand>
+          <Navbar.Brand to="/" className="navbar">Buy Low Sell High</Navbar.Brand>
           <Nav className="ms-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/buy">Stocks to buy</Nav.Link>
-            <Nav.Link href="/sell">Stocks to sell</Nav.Link>
+            <Link to="/" className="nav-link">Home</Link>
+            <Link to="/buy" className="nav-link">Stocks to buy</Link>
+            <Link to="/sell" className="nav-link">Stocks to sell</Link>
           </Nav>
         </Container>
       </Navbar>
