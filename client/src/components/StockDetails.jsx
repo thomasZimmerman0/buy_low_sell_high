@@ -24,6 +24,7 @@ const StockDetails = () => {
 
 
     useEffect(() => {
+        window.scrollTo(0,0)
         console.log(company);
     },[])
 

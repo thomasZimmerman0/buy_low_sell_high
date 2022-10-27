@@ -3,11 +3,11 @@
 
 
 .topSpace{
-    padding-top: 10%;
+    padding-top: 5%;
 }
 
 .extra{
-    margin-top: 10%;
+    margin-top: 5%;
 }
 
 .detailsDiv{
@@ -22,7 +22,10 @@
 }
 
 .footer{
-    display: none;
+    position:relative;
+    width: 100%;
+    bottom: 0px;
+    margin-top: 20%;
 }
 
 .navbarSiteName{
@@ -106,6 +109,7 @@
 }
 
 .dateList{
+
     padding: 2%;
     list-style-type: none;
     font-size: 24px;
@@ -114,12 +118,14 @@
 }
 
 .averageP{
+    text-align:center;
     font-size: 30px;
     font-weight: 100;
 
 }
 
 .listItem{
+    columns: 5;
     margin: 2%;
     font-family:'Courier New', Courier, monospace;
     display:flex;
@@ -151,33 +157,6 @@
     width: 35%
 }
 
-@media only screen and (max-width: 1200px) {
-    .chart{
-        width: 700px
-    }
-    .widthFix{
-        width: 60%
-    }
-}
-
-@media only screen and (max-width: 992px) {
-    .chart{
-        width: 500px
-    }
-    .widthFix{
-        width: 100%
-    }
-}
-
-@media only screen and (max-width: 768px) {
-    .chart{
-        width: 300px
-    }
-    .widthFix{
-        width: 100%
-    }
-}
-
 .searchInputs{
     position: relative;
     height: 55px;
@@ -204,17 +183,158 @@
     font-family: 'Righteous'
 }
 
+
 .search{
-    height: 85vh;
-    padding: 5%;
+    position: absolute;
+    width: 100%;
+    padding: 5% 0% 0% 0%;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.searchCont{
+    position: static;
+    display: flex;
+    justify-content: center;
 }
 
 .dataResult{
     margin-top: 3%;
 }
 
+.graph{
+    width: 800px
+}
 
+.sellBuyHeader{
+    padding-right: 5%;
+}
 
+@media only screen and (max-width: 2150px) {
+    .stock{
+        margin-top: 10%;
+    }
+}
+@media only screen and (max-width: 1790px) {
+    .chart{
+        width: 800px;
+    }
+}
+@media only screen and (max-width: 1400px) {
+    .chart{
+        width: 700px;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .widthFix{
+        width: 60%
+    }
+    .graph{
+        width: 700px
+    }
+}
+@media only screen and (max-width: 1100px) {
+    .chart{
+        width: 650px;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .chart{
+        width: 500px
+    }
+    .widthFix{
+        width: 100%
+    }
+    .graph{
+        width: 600px
+    }
+    .stockAlt{
+        margin-top: 10%;
+    }
+    .dateList .listItem{
+        padding: 1px;
+        flex-direction: column;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+
+    .extra{
+        margin-top: 10%;
+    }
+    .sellBuyHeader{
+        font-size: 20px;
+    }
+    .graphSubtext{
+        font-size:16px;
+    }
+    .chart{
+        width: 300px
+    }
+    .widthFix{
+        width: 100%
+    }
+    .graph{
+        width: 300px
+    }
+}
+@media only screen and (max-width: 500px) {
+
+    .dateList{
+       width: 400px;
+       flex-direction: column;
+    }
+
+    .dateList .date{
+        padding: 1px;
+        font-size: 20px;
+        flex-direction: column;
+    }
+
+    .dateList .listItem{
+        flex-direction: column;
+        font-size: 14px;
+    }
+
+    .extra{
+        margin-top: 15%;
+    }
+
+    .slider{
+        margin-top: 10%;
+    }
+
+    .chart{
+        width: 275px;
+    }
+
+    .slider .left-arrow{
+        left: 0;
+    }
+    .slider .right-arrow{
+        right: 0;
+    }
+
+    .navbar .nav-link{
+        font-size: 12px;
+    }
+
+    .navbar span{
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 420px) {
+    .chart{
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .extra{
+        margin-top: 30%;
+    }
+}

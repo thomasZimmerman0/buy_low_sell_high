@@ -16,6 +16,13 @@ const RenderSells = () => {
     borderColor: 'rgba(85, 226, 4, 1)'
   }
 
+  
+  useEffect(() => {
+    
+    window.scrollTo(0,0)
+    
+  }, [])
+
   return (
 
     <>
@@ -29,9 +36,9 @@ const RenderSells = () => {
 
                           <Link onClick={()=>dispatch(newSliceActions.setCompany(obj))} to="/stockDetails" style={{textDecoration: 'none'}} className="d-flex justify-content-center widthFix">
                               <div className="topSpace stock d-flex flex-column justify-content-center align-items-center">
-                              <h1><img src="https://cdn1.iconfinder.com/data/icons/vibrancie-action/30/action_060-trending_up-arrow-up-increase-512.png" width="34"/> {obj.symbol} : {obj.eod[0].close}</h1>
-                                  <p className="graphSubtext">  down {obj.percentChange}% from it's four month average price!</p>
-                                  <div style={{width: 700}}>
+                              <h1 className="sellBuyHeader"><img src="https://cdn1.iconfinder.com/data/icons/vibrancie-action/30/action_060-trending_up-arrow-up-increase-512.png" width="34"/> {obj.symbol} : {obj.eod[0].close}</h1>
+                                  <p className="graphSubtext">  up {obj.percentChange}% from it's four month average price!</p>
+                                  <div className="graph">
                                       <Chart compData={obj} color={colorObj}/>
                                   </div>
                               </div>

@@ -7,6 +7,8 @@ import {useDispatch, useSelector} from 'react-redux'
 import { Link } from 'react-router-dom'
 import Fade from 'react-reveal/Fade'
 
+import Footer from '../components/layout/Footer';
+
 const SearchBar = () => {
 
 const companies = useSelector(state => state.percent.companiesWithPercents)
@@ -64,7 +66,9 @@ const handleChange = (e) => {
                 })}
             </div>
         )}
+    <Footer className="footer"/>
     </div>
+
   )
 }
 

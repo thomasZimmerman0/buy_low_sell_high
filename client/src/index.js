@@ -27,14 +27,12 @@ root.render(
     <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
             <Router>
-                <BaseLayout>
                     <Routes>
                         <Route path="/" element={<App />}/>
-                        <Route path="/buy" element={<RenderBuys />}/>
-                        <Route path="/sell" element={<RenderSells />}/>
-                        <Route path="/stockDetails" element={<StockDetails />}/>
+                        <Route path="/buy" element={<BaseLayout><RenderBuys /></BaseLayout>}/>
+                        <Route path="/sell" element={<BaseLayout><RenderSells /></BaseLayout>}/>
+                        <Route path="/stockDetails" element={<BaseLayout><StockDetails /></BaseLayout>}/>
                     </Routes>
-                </BaseLayout>
             </Router>
         </PersistGate>
     </Provider>,

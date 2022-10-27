@@ -5,6 +5,8 @@ import {dataActions} from './reducers/dataSlice'
 import {percentActions} from './reducers/percentSlice'
 import './App.css'
 
+import Header from './components/layout/Header';
+
 import GraphSlider from './components/GraphSlider';
 import SearchBar from './components/SearchBar';
 import RenderBuys from './components/RenderBuys';
@@ -22,6 +24,8 @@ function App() {
       
       useEffect(() => {
 
+        window.scrollTo(0,0)
+
         const getData = async() => {
           
           const response = await fetch("/api")
@@ -33,8 +37,10 @@ function App() {
 
         getData()
 
+        
         let companyAvgs1 = []
       
+
         const getAverages = () => {
       
             let compiledAvgs = []
@@ -106,6 +112,7 @@ function App() {
   
   return (
     <>
+    <Header />
       <Slide top>
         <div className="container justify-content-center graphs">
           <GraphSlider />
@@ -132,7 +139,7 @@ function App() {
         </div>
       </div>
 
-      <div>
+      <div className="searchCont">
           <SearchBar />
       </div>
     </>
