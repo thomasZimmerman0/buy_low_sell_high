@@ -38,6 +38,10 @@ Currently, Buy low sell high is not being hosted due to limitations with the API
 
 * Make changes in order to host the website live, as well as add more stocks to the site.
 
+## Demo Video of the website
+
+https://youtu.be/NlmxoqftxZc
+
 ## Screenshots of the webpage:
 
 ![buylowsellhigh1](https://user-images.githubusercontent.com/107579894/206868635-71af81b9-62df-4ac1-970b-1d66de99091c.jpg)
